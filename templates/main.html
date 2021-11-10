@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Main{% endblock %}
+
+{% block content %}
+
+<div class="album py-5 bg-light">
+    {% if success %}
+    <div class="alert alert-success" role="alert">
+        {{message}}
+    </div>
+    {% elif success == False %}
+    <div class="alert alert-danger" role="alert">
+        {% for error in errors %}
+            {{error}}
+        {% endfor %}
+    </div>
+    {% endif %}
+    <form action="" method="post">
+        <div class="col-sm-12 d-sm-flex ai-sm-center">
+            <div class="input-group">
+                <input type="text" class="form-control" name="codon" placeholder="codon" maxlength="3">
+                <div class="col-sm-2">
+                    <select class="form-select" name="search_alg">
+                        <option value="" selected>Search algorithm</option>
+                        <option value="simple">Simple</option>
+                        <option value="linear_search">Linear search</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-outline-secondary">Search</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+{% endblock %}
